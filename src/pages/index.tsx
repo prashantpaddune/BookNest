@@ -1,13 +1,1 @@
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
-
-export default function Home() {
-  return (
-    <main className={`flex min-h-screen flex-col p-10 ${inter.className}`}>
-        <h1 className="text-4xl font-bold text-center">
-          BookNest
-        </h1>
-    </main>
-  )
-}
+export { default } from '@/components/Homepage';
