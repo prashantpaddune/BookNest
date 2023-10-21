@@ -1,5 +1,6 @@
 import Image from "next/image";
 import renderStars from "@/utils/renderStars";
+import Link from "next/link";
 
 interface Book {
     volumeInfo: {
@@ -37,7 +38,7 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
     };
 
     return (
-        <div className="bg-white p-4 border rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl relative">
+        <Link href={`/details/${book.id}`} className="bg-white p-4 border rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl relative">
             {thumbnail && (
                 <Image
                     width={50}
@@ -87,7 +88,7 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
