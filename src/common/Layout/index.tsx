@@ -1,8 +1,13 @@
+import React from 'react';
 import CartIcon from "./Cart";
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-const Layout = ({ children }) => {
+interface LayoutProps {
+    children: React.ReactNode;
+}
+
+const Layout: React.FC<LayoutProps> = ({ children }) => {
     const router = useRouter();
 
     const handleClick = () => {

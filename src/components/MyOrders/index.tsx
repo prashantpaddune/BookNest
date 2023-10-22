@@ -1,13 +1,51 @@
 import { useSelector } from 'react-redux';
 
-const MyOrders = () => {
-    const orders = useSelector(state => state.orders);
+
+interface ImageLinks {
+    thumbnail: string;
+}
+
+interface VolumeInfo {
+    title: string;
+    authors: string[];
+    imageLinks: ImageLinks;
+}
+
+interface RetailPrice {
+    amount: number;
+    currencyCode: string;
+}
+
+interface SaleInfo {
+    retailPrice: RetailPrice;
+}
+
+interface Item {
+    id: string;
+    volumeInfo: VolumeInfo;
+    saleInfo: SaleInfo;
+    quantity: number;
+}
+
+interface Order {
+    orderId: string | number;
+    orderDate: string;
+    items: Item[];
+    totalCost: number;
+}
+
+interface RootState {
+    orders: Order[];
+}
+
+const MyOrders: React.FC = () => {
+    const orders = useSelector((state: RootState) => state.orders);
 
     const renderOrders = () => {
         if (orders.length === 0) {
             return (
                 <div className="text-xl text-center mt-12">
-                    You haven't placed any orders yet.
+                    You have not placed any orders yet.
                 </div>
             );
         }

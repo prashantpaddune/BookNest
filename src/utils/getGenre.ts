@@ -1,6 +1,6 @@
 interface Book {
     volumeInfo: {
-        categories?: string[];
+        categories?: string | string[];
     };
 }
 

@@ -1,8 +1,26 @@
 import { useSelector } from 'react-redux';
 import {useRouter} from "next/router";
 
-const ConfirmationPage = () => {
-    const orders = useSelector(state => state.orders);
+interface CardDetails {
+    name: string;
+    number: string;
+    expiry: string;
+}
+
+interface Order {
+    orderId: string | number;
+    orderDate: string;
+    totalCost: number;
+    address: string;
+    cardDetails: CardDetails;
+}
+
+interface RootState {
+    orders: Order[];
+}
+
+const ConfirmationPage: React.FC = () => {
+    const orders = useSelector((state: RootState) => state.orders);
     const { query } = useRouter();
     const order = orders.find(order => order.orderId ==  query.orderId);
 

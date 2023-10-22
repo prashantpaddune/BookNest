@@ -3,7 +3,14 @@ import { GetServerSideProps } from "next";
 
 export { default } from '@/components/BookDetails';
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    const bookId = context.params.bookId;
+    if (!context.params) {
+        return {
+            notFound: true
+        };
+    }
+
+    const bookId = context.params.bookId || '';
+
     let originalBooks = [];
 
     try {
@@ -14,10 +21,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         originalBooks = [];
     }
 
-    const bookDetails = originalBooks.find(book => book.id == bookId);
+    const bookDetails = originalBooks.find((book: any) => book.id == bookId);
 
-    const booksWithSameCategory = originalBooks.filter(book => book.volumeInfo.categories
-        && book.volumeInfo.categories.some(category => bookDetails.volumeInfo.categories.includes(category) && book.id !== bookDetails.id));
+    const booksWithSameCategory = originalBooks.filter((book: any) => book.volumeInfo.categories
+        && book.volumeInfo.categories.some((category: any) => bookDetails.volumeInfo.categories.includes(category) && book.id !== bookDetails.id));
 
     return {
         props: {

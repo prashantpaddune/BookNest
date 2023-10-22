@@ -1,7 +1,16 @@
 import useGetCheckout from "@/hooks/useGetCheckout";
+import { UseFormHandleSubmit, UseFormRegister, FieldErrors, FieldValues } from 'react-hook-form';
+
+interface UseGetCheckoutReturnType {
+    handleSubmit: UseFormHandleSubmit<FieldValues, undefined>;
+    onSubmit: (data: any) => void;
+    errors: FieldErrors<FieldValues>;
+    register: UseFormRegister<FieldValues>;
+    requiredValidation: any;
+}
 
 function CheckoutPage() {
-    const { handleSubmit, onSubmit, errors, register, requiredValidation} = useGetCheckout();
+    const { handleSubmit, onSubmit, errors, register, requiredValidation}: UseGetCheckoutReturnType = useGetCheckout();
 
     return (
         <div className="container mx-auto px-4 py-6">

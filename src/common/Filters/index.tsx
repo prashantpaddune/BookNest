@@ -8,7 +8,7 @@ interface OptionType {
 interface FiltersProps {
     options: OptionType[];
     name: string;
-    value: string;
+    value: string | string[];
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 

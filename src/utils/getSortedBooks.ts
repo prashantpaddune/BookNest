@@ -1,5 +1,5 @@
 interface VolumeInfo {
-    categories?: string[];
+    categories?: string | string[];
     averageRating?: number;
     publishedDate?: string;
 }
@@ -18,11 +18,11 @@ interface Book {
 }
 
 const getSortedBooks = (
-    genre: string | null,
+    genre: string | string[] | null,
     filteredBooks: Book[],
-    sortBy: string | null,
+    sortBy: string | string[] | null,
 ): Book[] => {
-    if (genre) {
+    if (genre && typeof genre === 'string') {
         filteredBooks = filteredBooks.filter(book =>
             book.volumeInfo.categories && book.volumeInfo.categories.includes(genre)
         );
@@ -47,7 +47,7 @@ const getSortedBooks = (
                 const bDate = new Date(b.volumeInfo.publishedDate || '1970-01-01');
 
                 if (sortBy === 'default') {
-                    return a - b;
+                    return aPriced - bPriced;
                 }
 
                 if (sortBy === 'highestRating') {

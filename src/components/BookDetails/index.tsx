@@ -2,7 +2,47 @@ import renderStars from "@/utils/renderStars";
 import useGetBooksCart from "@/hooks/useGetBooksCart";
 import BookItem from "@/components/Homepage/BookItems";
 
-const BookDetails = ({ book, booksWithSameCategory }) => {
+interface DetailedBook {
+    volumeInfo: {
+        title: string;
+        authors?: string[];
+        publisher?: string;
+        publishedDate?: string;
+        language?: string;
+        categories: string[];
+        pageCount?: number;
+
+        description?: string;
+        averageRating?: number;
+        imageLinks?: {
+            thumbnail?: string;
+        };
+    };
+    saleInfo: {
+        listPrice?: {
+            amount: number;
+            currencyCode: string;
+        };
+        retailPrice?: {
+            amount: number;
+            currencyCode: string;
+        };
+        buyLink?: string;
+        isEbook?: boolean;
+    };
+    accessInfo: {
+        viewability: string;
+    };
+    id: string | undefined;
+}
+
+interface BookDetailsProps {
+    book: DetailedBook;
+    booksWithSameCategory: DetailedBook[];
+}
+
+
+const BookDetails: React.FC<BookDetailsProps> = ({ book, booksWithSameCategory }) => {
     const { handleAddToCart, showNotification} =  useGetBooksCart();
     const { volumeInfo, saleInfo, accessInfo } = book;
 
@@ -19,7 +59,7 @@ const BookDetails = ({ book, booksWithSameCategory }) => {
                         className="w-full md:w-1/3 mb-4 md:mb-0 bg-gray-200"
                         style={{
                             height: '50vh',
-                            backgroundImage: `url(${volumeInfo.imageLinks.thumbnail})`,
+                            backgroundImage: volumeInfo.imageLinks?.thumbnail ? `url(${volumeInfo.imageLinks.thumbnail})` : '',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             backgroundRepeat: 'no-repeat'
@@ -27,7 +67,7 @@ const BookDetails = ({ book, booksWithSameCategory }) => {
                     </div>
                     <div className="flex-1 space-y-4 md:space-y-6">
                         <h1 className="text-2xl md:text-3xl font-bold">{volumeInfo.title}</h1>
-                        <h2 className="text-lg md:text-xl text-gray-700">By {volumeInfo.authors.join(", ")}</h2>
+                        <h2 className="text-lg md:text-xl text-gray-700">By {volumeInfo.authors?.join(", ") || 'Unknown'}</h2>
                         {volumeInfo.averageRating && (
                             <div className="flex items-center space-x-2 mb-4">
                                 <span className="text-lg font-bold">Rating:</span>
@@ -48,7 +88,7 @@ const BookDetails = ({ book, booksWithSameCategory }) => {
                         {saleInfo.retailPrice?.amount ? (
                             <>
                                 <div className="text-xl md:text-2xl font-bold mb-2">
-                                    {saleInfo.retailPrice.amount} {saleInfo.retailPrice.currencyCode}
+                                    {saleInfo.retailPrice?.amount} {saleInfo.retailPrice?.currencyCode}
                                 </div>
 
                                 <div className="flex items-center space-x-4">

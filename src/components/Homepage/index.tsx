@@ -5,8 +5,8 @@ import { sortOptions } from "@/constants/filters";
 import { useRouter } from "next/router";
 import useGetCurretedResults from "@/hooks/useGetCurretedResults";
 
-interface Book {
-    id: number;
+interface BookProps {
+    id: string | undefined;
     volumeInfo: {
         title: string;
         authors?: string[];
@@ -26,7 +26,7 @@ interface Book {
 }
 
 interface HomeProps {
-    books: Book[];
+    books: BookProps[];
     totalPages: number;
     page: string;
     genres: any[];
@@ -34,7 +34,7 @@ interface HomeProps {
 
 function Home({ books = [], totalPages, page, genres }: HomeProps) {
     const { query = '' } = useRouter();
-    const { genre: defaultGenre = '', sortBy = '', page: pageNo = '' } = query;
+    const { genre: defaultGenre = '', sortBy = '', page: pageNo = '' } = query || {};
 
     const {
         handlePageChange = () => {},

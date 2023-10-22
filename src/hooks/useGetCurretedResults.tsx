@@ -42,10 +42,10 @@ const useGetCurretedResults = () => {
         window.location.href = newUrl;
     }
 
-    const handlePageChange = (newPage: string) => {
+    const handlePageChange = (newPage: number) => {
         const currentFilters = getCurrentFilters();
 
-        currentFilters.page = newPage;
+        currentFilters.page = newPage.toString();
         const newUrl = constructURL(currentFilters);
 
         window.location.href = newUrl;

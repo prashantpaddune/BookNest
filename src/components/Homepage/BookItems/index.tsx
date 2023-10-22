@@ -3,6 +3,7 @@ import renderStars from "@/utils/renderStars";
 import Link from "next/link";
 
 interface Book {
+    id: string | undefined;
     volumeInfo: {
         title: string;
         authors?: string[];
