@@ -28,7 +28,7 @@ function CartPage() {
                             <img src={item.volumeInfo.imageLinks.thumbnail} alt={item.volumeInfo.title} className="h-20 w-16 object-cover rounded" />
                             <div>
                                 <h2 className="text-xl font-medium">{item.volumeInfo.title}</h2>
-                                <p className="text-gray-600">${item.saleInfo.retailPrice.amount} x {item.quantity}</p>
+                                <p className="text-gray-600">{item.saleInfo.retailPrice.amount} INR x {item.quantity}</p>
                             </div>
                         </div>
                         <div className="flex items-center space-x-2">
@@ -47,7 +47,7 @@ function CartPage() {
             </div>
             <div className="mt-8 flex justify-end">
                 <div className="text-right">
-                    <p className="text-2xl font-semibold mb-2">Total: ${totalAmount.toFixed(2)}</p>
+                    <p className="text-2xl font-semibold mb-2">Total: {totalAmount.toFixed(2)} INR</p>
                     <button onClick={() => router.push('/checkout')} className="bg-green-500 hover:bg-green-600 px-6 py-2 rounded text-white font-medium">
                         Checkout
                     </button>
