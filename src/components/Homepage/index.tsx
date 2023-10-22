@@ -42,24 +42,27 @@ function Home({ books = [], totalPages, page, genres }: HomeProps) {
     } = useGetCurretedResults();
 
     return (
-        <main className={`flex min-h-screen flex-col p-10`}>
-            <div className="container mx-auto p-4 space-y-6">
-                <h1 className="text-4xl font-semibold text-gray-800 mb-4">Book Nest</h1>
-                <Filters options={sortOptions} name="sortBy" value={sortBy} onChange={applyFilters}/>
-                <Filters options={genres} name="genre" value={defaultGenre} onChange={applyFilters}/>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {books.map((book) => (
-                        <BookItem key={book.id} book={book} />
-                    ))}
+        <div className="min-h-screen">
+            <div className="container overflow-hidden space-y-8">
+                <div className="flex flex-wrap md:flex-nowrap justify-between items-start space-y-6 md:space-y-0 md:space-x-6">
+                    <div className="container mx-auto space-y-6">
+                        <Filters options={sortOptions} name="sortBy" value={sortBy} onChange={applyFilters}/>
+                        <Filters options={genres} name="genre" value={defaultGenre} onChange={applyFilters}/>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {books.map((book) => (
+                                <BookItem key={book.id} book={book} />
+                            ))}
+                        </div>
+                        <Pagination
+                            totalPages={totalPages}
+                            currentPage={parseInt(page, 10)}
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
                 </div>
-                <Pagination
-                    totalPages={totalPages}
-                    currentPage={parseInt(page, 10)}
-                    onPageChange={handlePageChange}
-                />
             </div>
-        </main>
+        </div>
+
     )
 }
 

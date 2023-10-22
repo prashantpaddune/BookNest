@@ -32,7 +32,6 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
     const { listPrice, buyLink } = saleInfo || {};
     const { amount, currencyCode } = listPrice || {};
 
-
     const handleAddToCart = () => {
         console.log(`Added book with ID  to cart`);
     };
