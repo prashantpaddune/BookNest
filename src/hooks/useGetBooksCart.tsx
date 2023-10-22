@@ -2,7 +2,7 @@ import {useState} from "react";
 import {addToCart} from "@/reducers/cart";
 import {useDispatch} from "react-redux";
 
-const useGetBooksCart = () => {
+const useGetBooksCart = ({ book }) => {
     const [showNotification, setShowNotification] = useState(false);
     const dispatch = useDispatch();
 

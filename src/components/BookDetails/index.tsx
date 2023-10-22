@@ -2,7 +2,7 @@ import renderStars from "@/utils/renderStars";
 import useGetBooksCart from "@/hooks/useGetBooksCart";
 
 const BookDetails = ({ book }) => {
-    const { handleAddToCart, showNotification} =  useGetBooksCart();
+    const { handleAddToCart, showNotification} =  useGetBooksCart({ book });
     const { volumeInfo, saleInfo, accessInfo } = book;
 
     return (
@@ -36,7 +36,7 @@ const BookDetails = ({ book }) => {
 
                         <div
                             className="relative w-full md:w-2/3 overflow-hidden"
-                            style={{ maxHeight: '200px' }}>
+                            style={{ maxHeight: '200px', width: "100%" }}>
 
                             <p className="description-text">
                                 {volumeInfo.description}
