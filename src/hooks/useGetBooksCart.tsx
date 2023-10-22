@@ -1,12 +1,13 @@
 import {useState} from "react";
-import {addToCart} from "@/reducers/cart";
-import {useDispatch} from "react-redux";
+import {addToCart, removeFromCart, updateCartItem} from "@/reducers/cart";
+import {useDispatch, useSelector} from "react-redux";
 
-const useGetBooksCart = ({ book }) => {
+const useGetBooksCart = () => {
     const [showNotification, setShowNotification] = useState(false);
     const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cart);
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (book) => {
         const quantity = parseInt(document.getElementById("quantity").value, 10) || 1;
 
         const payload = {
@@ -22,6 +23,21 @@ const useGetBooksCart = ({ book }) => {
         }, 3000);
     };
 
-    return {handleAddToCart, showNotification};
+    const handleIncrease = (item) => {
+        dispatch(updateCartItem({ ...item, quantity: item.quantity + 1 }));
+    };
+
+    const handleDecrease = (item) => {
+        if (item.quantity > 1) {
+            dispatch(updateCartItem({ ...item, quantity: item.quantity - 1 }));
+        } else {
+            dispatch(removeFromCart(item.id));
+        }
+    };
+
+    const totalAmount = cartItems.reduce((sum, item) => sum + (item.saleInfo.retailPrice.amount * item.quantity), 0);
+
+
+    return { handleAddToCart, showNotification, handleDecrease, handleIncrease, totalAmount, cartItems };
 }
 export default useGetBooksCart;

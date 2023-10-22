@@ -2,7 +2,7 @@ import renderStars from "@/utils/renderStars";
 import useGetBooksCart from "@/hooks/useGetBooksCart";
 
 const BookDetails = ({ book }) => {
-    const { handleAddToCart, showNotification} =  useGetBooksCart({ book });
+    const { handleAddToCart, showNotification} =  useGetBooksCart();
     const { volumeInfo, saleInfo, accessInfo } = book;
 
     return (
@@ -57,7 +57,7 @@ const BookDetails = ({ book }) => {
                                 </div>
 
                                 <div className="mt-2">
-                                    <button onClick={handleAddToCart} className="bg-green-500 text-white py-2 px-4 md:px-6 rounded-md hover:bg-green-600 transition">
+                                    <button onClick={() => handleAddToCart(book)} className="bg-green-500 text-white py-2 px-4 md:px-6 rounded-md hover:bg-green-600 transition">
                                         Add to Cart
                                     </button>
                                 </div>
