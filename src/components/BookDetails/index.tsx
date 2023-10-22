@@ -1,10 +1,17 @@
 import renderStars from "@/utils/renderStars";
+import useGetBooksCart from "@/hooks/useGetBooksCart";
 
 const BookDetails = ({ book }) => {
+    const { handleAddToCart, showNotification} =  useGetBooksCart();
     const { volumeInfo, saleInfo, accessInfo } = book;
 
     return (
         <div className="min-h-screen">
+            {showNotification && (
+                <div className="fixed top-16 right-4 bg-green-500 text-white py-2 px-4 rounded-md z-50">
+                    Item successfully added to cart!
+                </div>
+            )}
             <div className="container mx-auto bg-white rounded-lg drop-shadow-xl overflow-hidden p-4 md:p-6 space-y-4 md:space-y-8">
                 <div className="flex flex-col md:flex-row justify-between items-start space-y-4 md:space-y-0 md:space-x-6">
                     <div
@@ -50,7 +57,7 @@ const BookDetails = ({ book }) => {
                                 </div>
 
                                 <div className="mt-2">
-                                    <button className="bg-green-500 text-white py-2 px-4 md:px-6 rounded-md hover:bg-green-600 transition">
+                                    <button onClick={handleAddToCart} className="bg-green-500 text-white py-2 px-4 md:px-6 rounded-md hover:bg-green-600 transition">
                                         Add to Cart
                                     </button>
                                 </div>

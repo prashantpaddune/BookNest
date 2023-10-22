@@ -32,10 +32,6 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
     const { listPrice, buyLink } = saleInfo || {};
     const { amount, currencyCode } = listPrice || {};
 
-    const handleAddToCart = () => {
-        console.log(`Added book with ID  to cart`);
-    };
-
     return (
         <Link href={`/details/${book.id}`} className="bg-white p-4 border rounded-lg shadow-lg transform transition hover:scale-105 hover:shadow-xl relative">
             {thumbnail && (
@@ -70,19 +66,6 @@ const BookItem: React.FC<BookItemProps> = ({ book }) => {
                             </div>
                         ) : (
                             <div className="text-red-600 font-semibold">Out of Stock</div>
-                        )}
-                    </div>
-
-                    <div className="space-x-4">
-                        {buyLink && (
-                            <div className="space-x-2">
-                                <button onClick={handleAddToCart} className="border-2 border-indigo-500 text-indigo-500 p-2 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-300">
-                                    +
-                                </button>
-                                <button onClick={handleAddToCart} className="border-2 border-green-500 text-green-500 p-2 rounded-lg hover:bg-green-500 hover:text-white transition duration-300">
-                                    Buy
-                                </button>
-                            </div>
                         )}
                     </div>
                 </div>

@@ -7,9 +7,12 @@ import Layout from "@/common/Layout";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-      <Layout>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+            <Layout>
                 <Component {...pageProps} />
-      </Layout>
-
+            </Layout>
+        </PersistGate>
+      </Provider>
   )
 }
