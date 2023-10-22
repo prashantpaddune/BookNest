@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'books.google.com'
       },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com'
+      },
     ],
   },
 }
