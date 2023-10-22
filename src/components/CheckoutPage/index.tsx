@@ -1,7 +1,7 @@
 import useGetCheckout from "@/hooks/useGetCheckout";
 
 function CheckoutPage() {
-    const { handleSubmit, onSubmit, errors, register} = useGetCheckout();
+    const { handleSubmit, onSubmit, errors, register, requiredValidation} = useGetCheckout();
 
     return (
         <div className="container mx-auto px-4 py-6">

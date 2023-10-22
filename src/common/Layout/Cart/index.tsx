@@ -16,7 +16,6 @@ function CartIcon() {
                 <span className={"text-white rounded-full flex items-center justify-center text-xs font-bold"}>{cartItems.length} </span>
             )}
         </Link>
-
     );
 }
 

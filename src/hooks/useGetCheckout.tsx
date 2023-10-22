@@ -43,7 +43,7 @@ const useGetCheckout = () => {
         required: "This field is required"
     };
 
-    return { register, handleSubmit, errors, onSubmit };
+    return { register, handleSubmit, errors, onSubmit, requiredValidation };
 }
 
 export default useGetCheckout
