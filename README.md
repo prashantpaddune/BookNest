@@ -1,40 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Book Nest 📚 - A Book Buying E-commerce Platform
 
-## Getting Started
+Discover, buy, and dive deep into the world of books with Book Nest, an intuitive and modern book e-commerce platform.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Table of Contents
+
+- [Design Decisions](#design-decisions)
+- [Technologies Used](#technologies-used)
+- [Additional Features](#additional-features)
+- [Deployment](#deployment)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## Design Decisions
+
+- **Responsive Design**: Built with a mobile-first approach ensuring accessibility and user-friendliness on all devices.
+
+- **Performance First**: We use Next.js to ensure optimal loading speeds by utilizing Server-Side Rendering. This approach boosts the performance and provides instant feedback to users.
+
+- **State Management**: Using Redux Toolkit for efficient state management, making the app scalable and the state predictable.
+
+- **Form Handling**: Implemented React Hook Form for efficient form validations, improving user experience by providing immediate feedback.
+
+---
+
+## Technologies Used
+
+- **Next.js**: A React framework that ensures optimal page loading by using Hybrid Static & Server Rendering.
+
+- **Axios**: Promise-based HTTP client for making asynchronous requests.
+
+- **TailwindCSS**: Utility-first CSS framework for rapid UI development.
+
+- **Redux Toolkit**: The official, opinionated, batteries-included toolset for efficient Redux development.
+
+- **Redux Persist**: Used for persisting the Redux store to manage the application state even after browser refreshes.
+
+- **React Hook Form**: A performant, flexible, and extensible form solution.
+
+---
+
+## Additional Features
+
+- **Advanced Sorting Filters**: Sort books by various criteria: price, ratings, or publication date.
+
+- **Dynamic Checkout Process**:
+    - **Checkout Page**: Displays the total cost, takes address, and handles payment details.
+    - **Order Confirmation Page**: Confirms the successful placement of orders and provides order details.
+
+- **My Orders Section**: View order history, and view detailed purchase information.
+
+---
+
+## Deployment
+
+The application is deployed [here](https://book-nest-mocha.vercel.app/).  <!-- Replace 'your_deployment_link' with your actual deployment link -->
+
+---
+
+## Setup and Installation
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/prashantpaddune/BookNest.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Navigate to the project directory:
+```sh   
+cd BookNest
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+3. Install dependencies:
+```sh 
+pnpm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+4. Start the development server:
+```sh 
+pnpm dev
+```
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## License
 
-## Learn More
+This project is licensed under [MIT License](path_to_license).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
