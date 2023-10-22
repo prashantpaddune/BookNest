@@ -17,7 +17,7 @@ const BookDetails = ({ book }) => {
                     <div
                         className="w-full md:w-1/3 mb-4 md:mb-0 bg-gray-200"
                         style={{
-                            height: '30vh',
+                            height: '50vh',
                             backgroundImage: `url(${volumeInfo.imageLinks.thumbnail})`,
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',

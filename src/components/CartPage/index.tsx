@@ -1,8 +1,10 @@
 import Link from "next/link";
 import useGetBooksCart from "@/hooks/useGetBooksCart";
+import { useRouter } from "next/router";
 
 function CartPage() {
     const { handleIncrease, handleDecrease, totalAmount, cartItems } = useGetBooksCart();
+    const router = useRouter();
 
     if (cartItems.length === 0) {
         return (
@@ -46,7 +48,7 @@ function CartPage() {
             <div className="mt-8 flex justify-end">
                 <div className="text-right">
                     <p className="text-2xl font-semibold mb-2">Total: ${totalAmount.toFixed(2)}</p>
-                    <button className="bg-green-500 hover:bg-green-600 px-6 py-2 rounded text-white font-medium">
+                    <button onClick={() => router.push('/checkout')} className="bg-green-500 hover:bg-green-600 px-6 py-2 rounded text-white font-medium">
                         Checkout
                     </button>
                 </div>
