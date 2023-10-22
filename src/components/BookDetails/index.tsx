@@ -1,7 +1,8 @@
 import renderStars from "@/utils/renderStars";
 import useGetBooksCart from "@/hooks/useGetBooksCart";
+import BookItem from "@/components/Homepage/BookItems";
 
-const BookDetails = ({ book }) => {
+const BookDetails = ({ book, booksWithSameCategory }) => {
     const { handleAddToCart, showNotification} =  useGetBooksCart();
     const { volumeInfo, saleInfo, accessInfo } = book;
 
@@ -33,7 +34,6 @@ const BookDetails = ({ book }) => {
                                 <span className="text-yellow-400 text-xl">{renderStars(volumeInfo.averageRating)}</span>
                             </div>
                         )}
-
                         <div
                             className="relative w-full md:w-2/3 overflow-hidden"
                             style={{ maxHeight: '200px', width: "100%" }}>
@@ -82,6 +82,16 @@ const BookDetails = ({ book }) => {
                         <li><strong>Is eBook:</strong> {saleInfo.isEbook ? "Yes" : "No"}</li>
                     </ul>
                 </div>
+                {booksWithSameCategory.length > 0 && (
+                    <div className="mt-6 md:mt-10 space-y-4">
+                        <h2 className="text-xl md:text-2xl font-bold border-b pb-2">Related Books</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {booksWithSameCategory.map((relatedBook) => (
+                                <BookItem key={relatedBook.id} book={relatedBook} />
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );

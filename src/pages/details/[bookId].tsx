@@ -16,9 +16,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
     const bookDetails = originalBooks.find(book => book.id == bookId);
 
+    const booksWithSameCategory = originalBooks.filter(book => book.volumeInfo.categories
+        && book.volumeInfo.categories.some(category => bookDetails.volumeInfo.categories.includes(category) && book.id !== bookDetails.id));
+
     return {
         props: {
-            book: bookDetails
+            book: bookDetails,
+            booksWithSameCategory
         }
     };
 }
