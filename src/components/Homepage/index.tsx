@@ -41,6 +41,25 @@ function Home({ books = [], totalPages, page, genres }: HomeProps) {
         applyFilters = () => {},
     } = useGetCurretedResults();
 
+    const renderData = () => {
+        if (books.length === 0) {
+            return (
+                <div className="text-center py-8">
+                    <p className="text-xl font-bold">No data</p>
+                    <p className="text-gray-500">No books available.</p>
+                </div>
+            );
+        }
+
+        return (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {books.map((book) => (
+                    <BookItem key={book.id} book={book} />
+                ))}
+            </div>
+        )
+    }
+
     return (
         <div className="min-h-screen">
             <div className="container overflow-hidden space-y-8">
@@ -48,11 +67,7 @@ function Home({ books = [], totalPages, page, genres }: HomeProps) {
                     <div className="container mx-auto space-y-6">
                         <Filters options={sortOptions} name="sortBy" value={sortBy} onChange={applyFilters}/>
                         <Filters options={genres} name="genre" value={defaultGenre} onChange={applyFilters}/>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                            {books.map((book) => (
-                                <BookItem key={book.id} book={book} />
-                            ))}
-                        </div>
+                        {renderData()}
                         <Pagination
                             totalPages={totalPages}
                             currentPage={parseInt(page, 10)}
