@@ -116,7 +116,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ book, booksWithSameCategory }
                         <li><strong>Publisher:</strong> {volumeInfo.publisher}</li>
                         <li><strong>Published Date:</strong> {volumeInfo.publishedDate}</li>
                         <li><strong>Language:</strong> {volumeInfo.language}</li>
-                        <li><strong>Category:</strong> {volumeInfo.categories.join(", ")}</li>
+                        <li><strong>Category:</strong> {volumeInfo?.categories?.join(", ")}</li>
                         <li><strong>Pages:</strong> {volumeInfo.pageCount}</li>
                         <li><strong>Viewability:</strong> {accessInfo.viewability}</li>
                         <li><strong>Is eBook:</strong> {saleInfo.isEbook ? "Yes" : "No"}</li>
